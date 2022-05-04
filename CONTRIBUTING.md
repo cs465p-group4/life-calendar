@@ -1,5 +1,5 @@
 # Contributing
-To contribute to this project, clone the repo and create a new branch for the feature or bug you intend to work on.
+To contribute to this project, fork the repo, clone your fork, and create a new branch for the feature or bug you intend to work on.
 
 ## Branch naming conventions:
 ### Format
@@ -108,3 +108,34 @@ const int hoursInAWeek = 40;
 
 return (weeksInAYear * hoursInAWeek);
 ```
+
+# Commiting Your Changes
+> Commit often, push once.
+
+Frequent commits make review easier and saves a lot of headache if rollbacks are necessary. You can push more than once, if necessary. If your have an open pull request, new pushes will automatically be added to it.
+
+# Git Quickstart
+## Setup
+```bash
+# Clone your fork of the repo into the current directory
+git clone https://github.com/<your-username>/life-calendar.git
+# Navigate to the newly cloned directory
+cd life-calendar
+# Assign the original repo to a remote called "upstream"
+git remote add upstream https://github.com/jamesressler/life-calendar.git
+```
+
+## Get Changes from Upstream
+```bash
+git pull --rebase upstream main
+```
+
+## Push Your Changes to Your Fork
+```bash
+git push origin
+```
+
+## Open a Pull Request
+Finally, go to the [upstream repository](https://github.com/jamesressler/life-calendar) on GitHub and open a pull request.
+
+![Pull Request Tab Location](./assets/pullrequestdemo.png)

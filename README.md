@@ -16,7 +16,7 @@ TODO: Installation instructions
 |Sean Humm|Logan Peticolas|James Ressler|
 
 # Contributing
-To contribute to this project, clone the repo and create a new branch for the feature or bug you intend to work on. For more information, see our [coding style requirements](./CONTRIBUTING.md).
+To contribute to this project, fork the repo, clone your fork, and create a new branch for the feature or bug you intend to work on. For more information, see our [coding style requirements](./CONTRIBUTING.md).
 
 ## Branch naming conventions:
 ### Format
