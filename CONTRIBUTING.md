@@ -36,7 +36,7 @@ To contribute to this project, fork the repo, clone your fork, and create a new 
 Nobody wants to read and decipher spaghetti code. Keep your code modular. Break it into manageable, maintainable logical units.
 
 ## Keep it (human) Readable
-Code should convery intent with clear class, method, and variable names.
+Code should convey intent with clear class, method, and variable names.
 
 ## Delete Dead and Unreachable Code
 Do not leave huge blocks of commented out code in your commits because you might want to reference it later. Additionally, do not leave unreachable code in your commits.
@@ -63,7 +63,7 @@ if((x > 0 && x < 10) && x != 7) {
 }
 
 // YES
-if(IsXZeroToNine(x) && !IsXSeven(int x)) {
+if(IsXZeroToNine(x) && !IsXSeven(x)) {
   return true;
 }
 
