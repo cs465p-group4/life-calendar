@@ -18,6 +18,8 @@ To contribute to this project, fork the repo, clone your fork, and create a new 
 |UI/UX|`ui`|
 |Database|`db`|
 |Test Suite|`test`|
+|Frontend|`front`|
+|Backend|`back`|
 
 ### Description Example
 |Example Description|Example Convention|

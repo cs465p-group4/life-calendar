@@ -1,0 +1,12 @@
+version: "3"
+services:
+    postgres:
+        container_name: postgres
+        image: postgres
+        restart: always
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_DB=lifecaldb
+            - POSTGRES_USER=lifecal_user
+            - POSTGRES_PASSWORD=lifecal_pass
