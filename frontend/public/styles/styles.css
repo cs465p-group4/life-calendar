@@ -1,0 +1,121 @@
+body {
+    background-color: #1f1f1f;
+    color: #58e953;
+    font-family: Inconsolata, Roboto, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #EEC643;
+}
+
+.header {
+    text-align: center;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 390px;
+}
+
+.petContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #f5f3ef;
+    padding: 15px 0px 0px 0px;
+    border-radius: 0% 0% 2% 2%;
+    overflow: hidden;
+    max-width: 380px;
+}
+
+.petProfile {
+    display: grid;
+    justify-content: center;
+}
+
+.petName {
+    text-align: center;
+    color: #161616;
+}
+
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 3%;
+    background-color: #cecdca;
+    border-radius: 0% 0% 6% 6%;
+    width: inherit;
+}
+
+#Pass {
+    border-radius: 0% 0% 0% 6%;
+    border-right: solid rgb(216, 210, 210) 1px;
+}
+
+#Pass:active {
+    background-color: #800000;
+    color: white;
+    border: black;
+}
+
+#Like {   
+    border-radius: 0% 0% 6% 0%;
+}
+
+#Like:active {
+    background-color: #008000;
+    color: white;
+    border: black;
+}
+
+.petButton {
+    font-size: 45px;
+    background-color: #f5f3ef;
+    border:#afada9;
+    padding: 10px 20px;
+    width: 182px;
+    justify-self: stretch;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    float: left;
+    clear: left;
+    width: 340px;
+    text-align: left;
+    display: grid;
+    justify-content: space-around;
+    row-gap: 20%;
+    margin: 5%;
+    padding: 10%;
+    border: 4px #afada9 solid;
+    background-color: #f5f3ef;
+    color: black;
+}
+
+#email,
+#password,
+#user,
+#url {
+    float: right;
+    width: 200px;
+}
