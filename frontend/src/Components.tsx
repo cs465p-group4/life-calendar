@@ -1,5 +1,4 @@
 import React, { useEffect, useState} from "react";
-import { Profile as ProfileType } from "./types/StateTypes";
 import { Link, Outlet } from "react-router-dom";
 import { User } from "./services/UserService";
 import initialState from "./initialState";

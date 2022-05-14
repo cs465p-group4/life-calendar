@@ -8,12 +8,3 @@ export const User = {
     
   }
 }
-
-/*export const newProfile = {
-  async create(profile) {
-    return axios.post("/profiles"
-      , { username: profile.username, url: profile.url }
-    )
-    
-  }
-}*/
