@@ -4,9 +4,6 @@ import { State, Profile } from "./types/StateTypes";
 
 const initialState: State = {
   currentProfile: getLifeExpectancy(),
-  //currentProfile: getRandomProfile(),
-  //likeHistory: [getRandomProfile(), getRandomProfile()],
-  //passHistory: [],
 };
 
 export default initialState;
