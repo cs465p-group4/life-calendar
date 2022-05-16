@@ -6,6 +6,7 @@ export type ExpectancyProps = {
   getSearchClick: () => void,
 }
 
+// Search Data to find life expectancy
 export function SearchData(props: ExpectancyProps) {
   let {weeksLeft, getSearchClick} = props;
 
