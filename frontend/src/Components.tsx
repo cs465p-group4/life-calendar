@@ -69,9 +69,9 @@ export function SetData( { handleInputChange, saveData, user}) {
   );
 }
 
-type FilterBarProps = {
-  onApply: (filterString: string) => void,
-}
+// type FilterBarProps = {
+//   onApply: (filterString: string) => void,
+// }
 
 export const NotFound = () => (
   <div>
