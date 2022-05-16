@@ -1,5 +1,5 @@
 import random from "lodash.random";
-import { State, Profile } from "./types/StateTypes";
+import { State, lifeExpectancy } from "./types/StateTypes";
 
 
 const initialState: State = {
@@ -8,14 +8,10 @@ const initialState: State = {
 
 export default initialState;
 
-export function getLifeExpectancy(): Profile {
-  const age = random(0, 100, false);
-  const lifeExpectancy = random(0, 1000000000, false);
-
+export function getLifeExpectancy(): lifeExpectancy {
+  const lifeExpectancy = random(0, 100, false);
+  
   return {
-    age: age,
-    sex: "male",
-    ethnicity: "white",
-    lifeExpectancy: lifeExpectancy,
-  }
+    weeksLeft: lifeExpectancy,
+  };
 }

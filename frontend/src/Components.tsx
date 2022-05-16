@@ -1,77 +1,51 @@
-import React, { useEffect, useState} from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { User } from "./services/UserService";
-import initialState from "./initialState";
 
-export const SubmitData = () => {
+export type ExpectancyProps = {
+  weeksLeft: number,
+  getSearchClick: () => void,
+}
 
-  const [user, setUser] = useState(initialState);
-
-  const handleInputChange = event => {
-    const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
-  };
-
-  const saveData = () => {
-    User.create(user)
-  }
+// Search Data to find life expectancy
+export function SearchData(props: ExpectancyProps) {
+  let {weeksLeft, getSearchClick} = props;
 
   return (
-    <div>
-      <SetData handleInputChange={handleInputChange} saveData={saveData} user={user} />
+    <div className="formContainer">
+      <div className="form">
+          <div>
+            <label htmlFor="age">Age: </label> 
+            <input
+              type="text"
+              id="age"
+              required
+              name="age"
+              />
+            <br />
 
+            <label htmlFor="sex">Sex: </label>
+            <select name="sex" id="sex">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <br />
+
+            <label htmlFor="ethnicity">Ethnicity: </label>
+            <select name="eth" id="eth">
+              <option value="hispanic">Hispanic</option>
+              <option value="amerInAlaska">Non-Hispanic American Indian or Alaska Native</option>
+              <option value="asian">Non-Hispanic Asian</option>
+              <option value="black">Non-Hispanic Black</option>
+              <option value="white">Non-Hispanic White</option>
+            </select>
+            <br />
+            <p>Weeks left is {weeksLeft}!</p>
+            <button onClick={getSearchClick}> Search! </button>
+        </div>
+      </div> 
     </div>
   )
 }
-export function SetData( { handleInputChange, saveData, user}) {
-
-  useEffect(() => {
-    console.log("Profile rerendered");
-  });
-
-  return (
-      <div className="formContainer">
-        <div className="form">
-          <div>
-            <form action={saveData}>
-              <label htmlFor="age">Age: </label> 
-              <input
-                type="text"
-                id="age"
-                required
-                value={user.age}
-                onChange={handleInputChange}
-                name="age"
-                />
-              <br />
-
-              <label htmlFor="sex">Sex: </label>
-              <select name="sex" id="sex">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-              <br />
-
-              <label htmlFor="ethnicity">Ethnicity: </label>
-              <select name="eth" id="eth">
-                <option value="hispanic">Hispanic</option>
-                <option value="amerInAlaska">Non-Hispanic American Indian or Alaska Native</option>
-                <option value="asian">Non-Hispanic Asian</option>
-                <option value="black">Non-Hispanic Black</option>
-                <option value="white">Non-Hispanic White</option>
-              </select>
-              <br />
-              <input type="submit" value="Submit"></input>
-            </form>
-          </div>
-        </div>
-      </div>
-  );
-}
-
-// type FilterBarProps = {
-//   onApply: (filterString: string) => void,
-// }
 
 export const NotFound = () => (
   <div>

@@ -1,10 +1,7 @@
 export type State = {
-  currentProfile: Profile,
+  currentProfile: lifeExpectancy
 };
 
-export type Profile = {
-  age: number,
-  sex: string,
-  ethnicity: string,
-  lifeExpectancy: number
+export type lifeExpectancy = {
+  weeksLeft: number
 }

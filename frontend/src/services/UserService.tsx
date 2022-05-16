@@ -5,6 +5,5 @@ export const User = {
     return axios.post("/users"
       , { age: user.age, sex: user.sex, ethnicity: user.ethnicity }
     )
-    
-  }
+  }  
 }
