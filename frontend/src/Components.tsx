@@ -4,6 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 export type ExpectancyProps = {
   weeksLeft: number,
   getSearchClick: () => void,
+  weeks: string[],
 }
 
 export function Profile(props: ExpectancyProps) {
@@ -20,12 +21,18 @@ export function Profile(props: ExpectancyProps) {
     setSubmitted(false)
   }
 
+  const weeks: string[] = []
+  for (let i = 0; i< weeksLeft; i++) {
+    weeks.push("x ")
+  }
+
   return (
     <div>
       {/* If no data has been sent, show form */}
       {submitted ? (
           <>
           <p>Weeks left is: {weeksLeft}</p>
+          <p>Visual Representation: {weeks}</p>
           <button onClick={resetPage}>
             Reset
           </button>

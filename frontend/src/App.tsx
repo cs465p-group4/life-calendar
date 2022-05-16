@@ -5,6 +5,7 @@ import initialState, { getLifeExpectancy } from './initialState';
 
 function App() {
   let [currentProfile, setCurrentProfile] = useState(initialState.currentProfile);
+  const weeks: string [] = [];
 
   useEffect(() => {
     console.log("-- App rerenders --");
@@ -16,7 +17,8 @@ function App() {
   };
 
   let profile = <Profile {...currentProfile} 
-    getSearchClick={getSearchClick} />
+    getSearchClick={getSearchClick}
+    weeks={weeks} />
 
   return (
     <>
