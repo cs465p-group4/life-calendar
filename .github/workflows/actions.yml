@@ -4,13 +4,8 @@ jobs:
   build-frontend:
     runs-on: ubuntu-latest
     steps:
-      - name: The job was automatically triggered by a ${{ github.event_name }} event.
-      - name: This job is now running on a ${{ runner.os }}.
-      - name: The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}.
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: The ${{ github.repository }} repository has been cloned to the runner.
-      - name: The workflow is now ready to test your code on the runner.
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
@@ -25,4 +20,4 @@ jobs:
         run: npm ci
       - run: npm run build --if-present
       - run: npm test
-      - name: This job's status is ${{ job.status }}.
+      - run: echo "This job's status is ${{ job.status }}."
