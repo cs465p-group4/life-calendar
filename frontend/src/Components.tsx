@@ -13,6 +13,7 @@ export function Profile(props: ExpectancyProps) {
 
   const getExpectancy = () => {
     setSubmitted(true)
+    getSearchClick();
   }
 
   const resetPage = () => {
