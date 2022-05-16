@@ -1,5 +1,5 @@
 import React, { useEffect, useState  } from 'react';
-import { SearchData, NotFound, Header} from "./Components";
+import { Profile, NotFound, Header} from "./Components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import initialState, { getLifeExpectancy } from './initialState';
 
@@ -15,7 +15,7 @@ function App() {
     setCurrentProfile(currentProfile)
   };
 
-  let profile = <SearchData {...currentProfile} 
+  let profile = <Profile {...currentProfile} 
     getSearchClick={getSearchClick} />
 
   return (
