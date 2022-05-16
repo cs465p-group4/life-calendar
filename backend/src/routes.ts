@@ -2,7 +2,9 @@ import cors from "cors";
 import { promises as fs } from "fs";
 import path from "path";
 import express from "express";
-//import { testMongo, testPostgres } from "./lib/helpers";
+import { testMongo, testPostgres } from "./lib/helpers";
+import { checkDuplicateEmail } from "./middlewares/verifySignUp";
+import { createUser } from "./services/userService";
 
 export default function setupRoutes(app) {
 
@@ -11,6 +13,9 @@ export default function setupRoutes(app) {
 
   // We're using a router now, so that we can prefix it with /api/v1 later
   const router = express.Router();
+
+  router.post("/users", checkDuplicateEmail, createUser );
+
 
 
   router.use("/testJson", (req, res) => {
@@ -21,14 +26,14 @@ export default function setupRoutes(app) {
     res.status(200).send("about:GET");
   });
 
-  // router.get("/testMongo", async (req, res) => {
-  //   let mongoinfo = await testMongo();
-  //   res.json(mongoinfo);
-  // });
+  router.get("/testMongo", async (req, res) => {
+    let mongoinfo = await testMongo();
+    res.json(mongoinfo);
+  });
 
-  // router.get("/testPostgres", async (req, res) => {
-  //   res.json(await testPostgres());
-  // });
+  router.get("/testPostgres", async (req, res) => {
+    res.json(await testPostgres());
+  });
 
   
   // This will redirect all requests made to /api/vi/... to the router
