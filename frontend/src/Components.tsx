@@ -23,6 +23,7 @@ export const SubmitData = () => {
     </div>
   )
 }
+
 export function SetData( { handleInputChange, saveData, user}) {
 
   useEffect(() => {
@@ -68,10 +69,6 @@ export function SetData( { handleInputChange, saveData, user}) {
       </div>
   );
 }
-
-// type FilterBarProps = {
-//   onApply: (filterString: string) => void,
-// }
 
 export const NotFound = () => (
   <div>
