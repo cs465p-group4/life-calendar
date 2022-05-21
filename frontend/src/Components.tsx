@@ -1,5 +1,6 @@
 import React, { useState }from "react";
 import { Link, Outlet } from "react-router-dom";
+import { Comment } from "./services/CommentService";
 
 export type ExpectancyProps = {
   weeksLeft: number,
@@ -11,6 +12,7 @@ export function Profile(props: ExpectancyProps) {
   let {weeksLeft, getSearchClick} = props;
 
   const [submitted, setSubmitted] = useState(false);
+  const [comment, setComment] = useState(initialCommentState);
 
   const getExpectancy = () => {
     setSubmitted(true)
@@ -27,6 +29,19 @@ export function Profile(props: ExpectancyProps) {
   }
 
   var renderBoxes = weeks.map(item =>  <div className="boxes"> {item} </div>)
+
+  const handleInputChange = event => {
+    const {name, value} = event.target;
+    setComment( {...comment, [name]: value});
+  }
+
+  const postComment = () => {
+    Comment.publish(comment)
+    .then(res => {
+      setSubmitted(true);
+      setComment(initialCommentState);
+    });
+  }
 
   return (
     <div>
@@ -50,6 +65,7 @@ export function Profile(props: ExpectancyProps) {
         <>
         {/* Else, show expected output*/}
         <SearchDataForm getExpectancy={getExpectancy} />
+        <CommentForm postComment={postComment}/> 
         </>
       )
       }
@@ -91,6 +107,32 @@ return (
             <button onClick={getExpectancy}> Search! </button>
         </div>
       </div> 
+    </div>
+  )
+}
+
+const initialCommentState = {
+  name: "",
+  message: "",
+  date: "",
+};
+
+export const CommentForm = ({postComment}) => {
+  return (
+    <div>
+      <div>
+        <h2>Submit a Comment</h2>
+          <p>
+            Name: <input type="text" name="name" />
+          </p>
+
+          <p>
+            Comment:
+            <textarea name="comment"></textarea>
+          </p>
+
+        <button onClick={postComment}>Submit</button>
+      </div>
     </div>
   )
 }
