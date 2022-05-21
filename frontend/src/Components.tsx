@@ -1,7 +1,6 @@
 import React, { useState }from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Comment } from "./services/CommentService";
-import { commentClient } from "./services/HttpService";
 
 export type ExpectancyProps = {
   weeksLeft: number,
