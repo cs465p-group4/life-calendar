@@ -1,6 +1,7 @@
 import React, { useState }from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Comment } from "./services/CommentService";
+import { commentClient } from "./services/HttpService";
 
 export type ExpectancyProps = {
   weeksLeft: number,
@@ -65,7 +66,7 @@ export function Profile(props: ExpectancyProps) {
         <>
         {/* Else, show expected output*/}
         <SearchDataForm getExpectancy={getExpectancy} />
-        <CommentForm postComment={postComment}/> 
+        <CommentForm postComment={postComment} handleInputChange={handleInputChange} comment={comment}/> 
         </>
       )
       }
@@ -117,18 +118,32 @@ const initialCommentState = {
   date: "",
 };
 
-export const CommentForm = ({postComment}) => {
+export const CommentForm = ({postComment, handleInputChange, comment}) => {
   return (
     <div>
       <div>
         <h2>Submit a Comment</h2>
           <p>
-            Name: <input type="text" name="name" />
+            Name: 
+            <input 
+            type="text"
+            id="name"
+            required
+            onChange={handleInputChange} 
+            name="name" />
+            value={comment.name}
           </p>
 
           <p>
             Comment:
-            <textarea name="comment"></textarea>
+            <textarea 
+            name="comment"
+            id="comment"
+            required
+            onChange={handleInputChange}
+            value={comment.message}>
+
+            </textarea>
           </p>
 
         <button onClick={postComment}>Submit</button>
