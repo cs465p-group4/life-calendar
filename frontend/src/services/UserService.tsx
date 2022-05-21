@@ -1,8 +1,8 @@
-import axios from "./HttpService";
+import {httpClient} from "./HttpService";
 
 export const User = {
   async create(user) {
-    return axios.post("/users"
+    return httpClient.post("/users"
       , { age: user.age, sex: user.sex, ethnicity: user.ethnicity }
     )
   }  
