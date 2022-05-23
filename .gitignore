@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Flask environment
+env
+
+# Python Cache
+__pycache__

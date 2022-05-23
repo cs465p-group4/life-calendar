@@ -10,6 +10,7 @@ export const httpClient = axios.create({
 export const commentClient = axios.create({
   baseURL: "http://localhost:5000",
   headers: {
-    "Content-type": "application/json"
+    "Content-type": "application/json",
+    "Access-Control-Allow-Origin": "*"
   }
 });

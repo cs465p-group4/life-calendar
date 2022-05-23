@@ -122,29 +122,31 @@ export const CommentForm = ({postComment, handleInputChange, comment}) => {
     <div>
       <div>
         <h2>Submit a Comment</h2>
-          <p>
-            Name: 
-            <input 
-            type="text"
-            id="name"
-            required
-            onChange={handleInputChange} 
-            name="name" />
-            value={comment.name}
-          </p>
+          <form>
+            <p>
+              Name: 
+              <input 
+              type="text"
+              id="name"
+              required
+              onChange={handleInputChange} 
+              name="name"
+              value={comment.name}
+              />
+            </p>
 
-          <p>
-            Comment:
-            <textarea 
-            name="comment"
-            id="comment"
-            required
-            onChange={handleInputChange}
-            value={comment.message}>
-
-            </textarea>
-          </p>
-
+            <p>
+              Comment:
+              <input 
+              type="text"
+              id="message"
+              required
+              onChange={handleInputChange} 
+              name="message"
+              value={comment.message}
+              />
+            </p>
+          </form>
         <button onClick={postComment}>Submit</button>
       </div>
     </div>
