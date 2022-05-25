@@ -1,5 +1,5 @@
 import React, { useEffect, useState  } from 'react';
-import { Profile, NotFound, Header} from "./Components";
+import { Profile, Comments, NotFound, Header} from "./Components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import initialState, { getLifeExpectancy } from './initialState';
 
@@ -18,7 +18,10 @@ function App() {
 
   let profile = <Profile {...currentProfile} 
     getSearchClick={getSearchClick}
-    weeks={weeks} />
+    weeks={weeks}
+  />
+
+  let comments = <Comments />
 
   return (
     <>
@@ -26,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="/" element={profile} />
+            <Route path="/comments" element={comments} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

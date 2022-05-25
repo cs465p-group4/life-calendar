@@ -2,5 +2,5 @@ from .pyModel import model
 
 appmodel = model()
 
-def getModel():
+def get_model():
     return appmodel

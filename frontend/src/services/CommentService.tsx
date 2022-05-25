@@ -1,16 +1,15 @@
 import {commentClient} from "./HttpService";
 
-export const Comment = {
-    async publish(comment) {
-      return commentClient.post("/comment"
-        , { name: comment.name, message: comment.message, date: comment.date }
-      )
-    },  
+export async function publish(comment) {
+  return commentClient.post("/comments"
+    , { name: comment.name, comment: comment.message, date: comment.date }
+  )
+}
 
-    async display() {
-      let res = await commentClient.get("/comment");
-      let data = await res.data;
-      console.log(typeof(data))
-      return data;
-    }
-  }
+export async function display() {
+  let res = await commentClient.get("/comments")
+  let data = await res.data;
+  console.log("name: ", data[0].name);
+  console.log("comment", data[0].comment)
+  return data;
+}
