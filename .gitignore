@@ -103,8 +103,8 @@ dist
 # TernJS port file
 .tern-port
 
-# Flask environment
-env
+# Virual Environment for Flask App
+venv
 
 # Python Cache
 __pycache__

@@ -5,7 +5,6 @@ import express from "express";
 import { testMongo, testPostgres } from "./lib/helpers";
 import { checkDuplicateEmail } from "./middlewares/verifySignUp";
 import { createUser } from "./services/userService";
-
 export default function setupRoutes(app) {
 
   app.use(cors());
@@ -15,7 +14,9 @@ export default function setupRoutes(app) {
   const router = express.Router();
 
   router.post("/users", checkDuplicateEmail, createUser );
-
+  router.post("/comment", async (req, res) => {
+    res.status(200)
+  });
 
 
   router.use("/testJson", (req, res) => {
@@ -25,6 +26,8 @@ export default function setupRoutes(app) {
   router.get("/about", async (req, res) => {
     res.status(200).send("about:GET");
   });
+
+  
 
   router.get("/testMongo", async (req, res) => {
     let mongoinfo = await testMongo();
