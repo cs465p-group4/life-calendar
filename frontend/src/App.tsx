@@ -2,6 +2,7 @@ import React, { useEffect, useState  } from 'react';
 import { Profile, Comments, NotFound, Header} from "./Components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import initialState, { getLifeExpectancy } from './initialState';
+import { Login } from "./Components";
 
 function App() {
   let [currentProfile, setCurrentProfile] = useState(initialState.currentProfile);
@@ -21,6 +22,7 @@ function App() {
     weeks={weeks}
   />
 
+  let login = <Login />
   let comments = <Comments />
 
   return (
@@ -29,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="/" element={profile} />
+            <Route path="login" element={login} />
             <Route path="/comments" element={comments} />
           </Route>
           <Route path="*" element={<NotFound />} />
