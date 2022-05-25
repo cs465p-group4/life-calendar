@@ -63,6 +63,6 @@ a:hover {
 #password,
 #user,
 #url {
-    float: right;
+    float: center;
     width: 200px;
 }
