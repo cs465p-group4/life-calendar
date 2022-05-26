@@ -1,16 +1,15 @@
 import React, { useState, useCallback } from "react";
-import { Link, Outlet } from "react-router-dom";
-import { publish, display } from "./services/CommentService";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { publish, display } from "./services/CommentService"
 import { useAuth } from "./services/AuthService";
-import { useNavigate } from "react-router-dom";
 
 export type ExpectancyProps = {
   weeksLeft: number,
-  weeks: string[],
   getSearchClick: () => void,
 }
 
 export function Profile(props: ExpectancyProps) {
+
   let { weeksLeft, getSearchClick } = props;
 
   const [submitted, setSubmitted] = useState(false);
@@ -18,14 +17,15 @@ export function Profile(props: ExpectancyProps) {
   const getExpectancy = () => {
     setSubmitted(true);
     getSearchClick();
+    console.log("WeeksLeft", weeksLeft);
   }
 
   const resetPage = () => {
     setSubmitted(false);
   }
 
-  const weeks: string[] = []
-  for (let i = 0; i < weeksLeft; i++) {
+  const weeks: string[] = [];
+  for(let i = 0; i < weeksLeft; i++) {
     weeks.push(" ");
   }
 
@@ -33,30 +33,26 @@ export function Profile(props: ExpectancyProps) {
 
   return (
     <div>
-      {/* If submitted show expected output*/}
+      {/* If submitted, show expected weeks left*/}
       {submitted ? (
         <>
-          <p>Weeks left is: {weeksLeft}</p>
-          <p>Visual Representation:</p>
-          <div className="display">
-            <div className="boxContainer">
-              {renderBoxes}
-            </div>
-            <div className="button">
-              <button onClick={resetPage}>
-                Reset
-              </button>
-            </div>
+        <p>Weeks Left: {weeksLeft}</p>
+        <p>Visual Representation: </p>
+        <div className="display">
+          <div className="boxContainer">
+            {renderBoxes}
           </div>
+          <div className="button">
+            <button onClick={resetPage}>Reset</button>
+          </div>
+        </div>
         </>
-      ) : (
-        <>
-          {/* Else, if no data has been sent, show form */}
-          <SearchDataForm getExpectancy={getExpectancy} />
-        </>
+      ):(
+      <>
+        <SearchDataForm getExpectancy={getExpectancy}/>
+      </>
       )}
     </div>
-
   )
 }
 
@@ -173,95 +169,87 @@ export function Login() {
   )
 }
 
-
-const initialCommentState = {
-  name: "",
-  comment: "",
-  date: "",
-};
-
-export type CommentExpectancyProps = {
+export type CommentProps = {
+  name: string,
+  message: string,
+  date: Date,
 }
 
-export function Comments() {
+const initialComment = {
+  name: "",
+  message: "",
+  date: "",
+}
 
-  const [comment, setComment] = useState(initialCommentState);
-  const [returnedComments, setRetCom] = useState(initialCommentState);
-  const [submittedComments, setSubmitComment] = useState(false);
+export function Comment() {
 
-  const postComment = () => {
-    setSubmitComment(true);
-    publish(comment);
-  }
-
-  const getComments = () => {
-    display()
-      .then(res => {
-        //console.log("name? or com?", res.name, res.comment)
-        setRetCom(res);
-      });
-  }
+  const [comment, setComment] = useState(initialComment); 
+  const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setComment({ ...comment, [name]: value });
+    setComment({ ...comment, [name]:value });
   }
 
-  //var renderComments = returnedComments.map(item => <div> {item} </div>)
+  var allTheComments: Array<Comment> = [];
+
+  const submitComments = () => {
+    console.log("name: ", comment.name, "comment:", comment.message);
+    publish(comment);
+    setSubmitted(true);
+    display()
+      .then(res => {
+        allTheComments = res[0].name;
+        console.log("res result:", res);
+        console.log("Name:", res[0].name, "Comment:", res[0].comment, "Date:", res[0].date);
+      });
+  }
 
   return (
     <div>
-      {submittedComments ? (
+      <>
+        <CommentForm handleInputChange={handleInputChange} submitComments={submitComments} comment={comment} />
+      </>
+      {submitted ? (
         <>
-          <button onClick={getComments}>Comments?</button>
-          <p>the Comments:</p>
-          <br />
-          {/*<p>Returned Comments: {returnedComments}</p>*/}
-          <p>Name: {returnedComments[0].name}</p>
-          <p>Comment: {returnedComments[0].comment}</p>
+          <p>Submitted Comments:</p>
+          {allTheComments}
         </>
       ) : (
-        <CommentForm postComment={postComment} handleInputChange={handleInputChange} comment={comment} />
+        <>
+        </>
       )}
-
     </div>
   )
 }
 
-
-export const CommentForm = ({ postComment, handleInputChange, comment }) => {
+export const CommentForm = ({ handleInputChange, submitComments, comment }) => {
   return (
     <div>
-      <div>
-        <h2>Submit a Comment</h2>
-        <form>
-          <p>
-            Name:
-            <input
-              type="text"
-              id="name"
-              required
-              onChange={handleInputChange}
-              name="name"
-              value={comment.name}
-            />
+      <h2> Submit a Comment </h2>
+        <p> 
+          Name:
+          <input
+          type="text"
+          id="name"
+          required
+          onChange={handleInputChange}
+          name="name"
+          value={comment.name}
+          />
+        </p>
+        <p> 
+          Message:
+          <input
+          type="text"
+          id="message"
+          required
+          onChange={handleInputChange}
+          name="message"
+          value={comment.message}
+          />
           </p>
-          <p>
-            Comment:
-            <input
-              type="text"
-              id="comment"
-              required
-              onChange={handleInputChange}
-              name="message"
-              value={comment.message}
-            />
-
-          </p>
-          {/*<p><input type="submit" value="Comment" /></p>*/}
-          <button onClick={postComment}>Submit</button>
-        </form>
-      </div>
+        <button onClick={submitComments}>Submit</button>
     </div>
   )
 }

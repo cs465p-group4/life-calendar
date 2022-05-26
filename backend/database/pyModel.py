@@ -22,7 +22,6 @@ class model(Model):
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM comments")
         result = cursor.fetchall()
-        print(result[1])
         return result
 
     def insert(self, name, comment):
