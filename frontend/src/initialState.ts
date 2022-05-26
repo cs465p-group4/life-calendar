@@ -4,6 +4,7 @@ import { State, lifeExpectancy } from "./types/StateTypes";
 
 const initialState: State = {
   currentProfile: getLifeExpectancy(),
+  currentComment: [],
 };
 
 export default initialState;

@@ -1,29 +1,24 @@
-import React, { useEffect, useState  } from 'react';
-import { Profile, Comments, NotFound, Header} from "./Components";
+import React, { useState  } from 'react';
+import { Login, Profile as ProfileType, Comment as CommentType, NotFound, Header} from "./Components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import initialState, { getLifeExpectancy } from './initialState';
-import { Login } from "./Components";
 
 function App() {
   let [currentProfile, setCurrentProfile] = useState(initialState.currentProfile);
-  const weeks: string [] = [];
+  //let [currentComment, setCurrentComment] = useState(initialState.currentComment);
 
-  useEffect(() => {
-    console.log("-- App rerenders --");
-  });
-  
   let getSearchClick = () => {
     currentProfile = getLifeExpectancy();
-    setCurrentProfile(currentProfile)
-  };
+    setCurrentProfile(currentProfile);
+    console.log(currentProfile);
+  }
 
-  let profile = <Profile {...currentProfile} 
-    getSearchClick={getSearchClick}
-    weeks={weeks}
+  let profile = <ProfileType {...currentProfile}
+    getSearchClick={getSearchClick} 
   />
 
   let login = <Login />
-  let comments = <Comments />
+  let comment = <CommentType/>
 
   return (
     <>
@@ -31,8 +26,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="/" element={profile} />
-            <Route path="login" element={login} />
-            <Route path="/comments" element={comments} />
+            <Route path="/login" element={login} />
+            <Route path="/comments" element={comment} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

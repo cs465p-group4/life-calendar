@@ -20,12 +20,12 @@ def comment():
             data = request.get_json()
             model.insert(data['name'], data['comment'])
         return 'OK'
-    else:
-        if(request.method=='GET'):
-            print("in GET")
-            entries = [dict(name=row[0], comment=row[1], date=row[2]) for row in model.select()]
-            print(entries)
-            newEntries = json.dumps(entries)
+
+    elif(request.method=='GET'):
+        print("in GET")
+        entries = [dict(name=row[0], comment=row[1], date=row[2]) for row in model.select()]
+        #print("app.py result: ", entries)
+        newEntries = json.dumps(entries)
         return newEntries
             
 if __name__ == '__main__':
