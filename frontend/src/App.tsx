@@ -1,11 +1,11 @@
 import React, { useEffect, useState  } from 'react';
-import { Profile, Comments, NotFound, Header} from "./Components";
+import { Profile, Comments, NotFound, Header, Login } from "./Components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import initialState, { getLifeExpectancy } from './initialState';
-import { Login } from "./Components";
 
 function App() {
   let [currentProfile, setCurrentProfile] = useState(initialState.currentProfile);
+
   const weeks: string [] = [];
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function App() {
   
   let getSearchClick = () => {
     currentProfile = getLifeExpectancy();
-    setCurrentProfile(currentProfile)
+    setCurrentProfile(currentProfile);
   };
 
   let profile = <Profile {...currentProfile} 
@@ -25,13 +25,14 @@ function App() {
   let login = <Login />
   let comments = <Comments />
 
+
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="/" element={profile} />
-            <Route path="login" element={login} />
+            <Route path="/login" element={login} />
             <Route path="/comments" element={comments} />
           </Route>
           <Route path="*" element={<NotFound />} />
