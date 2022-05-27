@@ -5,12 +5,10 @@ import initialState, { getLifeExpectancy } from './initialState';
 
 function App() {
   let [currentProfile, setCurrentProfile] = useState(initialState.currentProfile);
-  //let [currentComment, setCurrentComment] = useState(initialState.currentComment);
 
   let getSearchClick = () => {
     currentProfile = getLifeExpectancy();
     setCurrentProfile(currentProfile);
-    console.log(currentProfile);
   }
 
   let profile = <ProfileType {...currentProfile}
