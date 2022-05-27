@@ -1,5 +1,5 @@
 import React, { useState  } from 'react';
-import { Login, Profile as ProfileType, Comment as CommentType, NotFound, Header} from "./Components";
+import { Login, Profile as ProfileType, Comments as CommentType, NotFound, Header} from "./Components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import initialState, { getLifeExpectancy } from './initialState';
 
