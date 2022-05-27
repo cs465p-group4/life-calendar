@@ -1,12 +1,12 @@
 export type State = {
-  currentProfile: lifeExpectancy
+  currentProfile: LifeExpectancy
 };
 
-export type lifeExpectancy = {
+export type LifeExpectancy = {
   weeksLeft: number
 }
 
-export type comment = {
+export type Comment = {
   name: string
   message: string
   date: Date

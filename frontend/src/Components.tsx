@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { publish, display } from "./services/CommentService";
+import { publish } from "./services/CommentService";
 import { useAuth } from "./services/AuthService";
 import { useNavigate } from "react-router-dom";
+import { commentClient } from "./services/HttpService";
 
 export type ExpectancyProps = {
   weeksLeft: number,
@@ -176,30 +177,31 @@ export function Login() {
 
 const initialCommentState = {
   name: "",
-  comment: "",
+  message: "",
   date: "",
 };
-
-export type CommentExpectancyProps = {
-}
 
 export function Comments() {
 
   const [comment, setComment] = useState(initialCommentState);
-  const [returnedComments, setRetCom] = useState(initialCommentState);
-  const [submittedComments, setSubmitComment] = useState(false);
+  const [comments, getComments] = useState('');
 
-  const postComment = () => {
-    setSubmitComment(true);
-    publish(comment);
+  useEffect(() => {
+    getAllComments();
+  }, []);
+
+  const getAllComments = () => {
+    commentClient.get("/comments")
+      .then((response) => {
+        const allComments = response.data;
+        console.log(allComments);
+        getComments(allComments);
+      })
+      .catch(error => console.error("Error", error));
   }
 
-  const getComments = () => {
-    display()
-      .then(res => {
-        //console.log("name? or com?", res.name, res.comment)
-        setRetCom(res);
-      });
+  const postComment = () => {
+    publish(comment);
   }
 
   const handleInputChange = event => {
@@ -207,27 +209,31 @@ export function Comments() {
     setComment({ ...comment, [name]: value });
   }
 
-  //var renderComments = returnedComments.map(item => <div> {item} </div>)
-
   return (
     <div>
-      {submittedComments ? (
-        <>
-          <button onClick={getComments}>Comments?</button>
-          <p>the Comments:</p>
-          <br />
-          {/*<p>Returned Comments: {returnedComments}</p>*/}
-          <p>Name: {returnedComments[0].name}</p>
-          <p>Comment: {returnedComments[0].comment}</p>
-        </>
-      ) : (
+      <>
         <CommentForm postComment={postComment} handleInputChange={handleInputChange} comment={comment} />
-      )}
-
+        <DisplayComments comments={comments} />
+      </>
     </div>
   )
 }
 
+const DisplayComments = (props) => {
+  const { comments } = props;
+
+  return (
+    comments.map((comment, index) => {
+      return(
+        <>
+        <p>{comment.name}</p>
+        <p>{comment.message}</p>
+        <p>{comment.date}</p>
+        </>
+      )
+    })
+  )
+}
 
 export const CommentForm = ({ postComment, handleInputChange, comment }) => {
   return (

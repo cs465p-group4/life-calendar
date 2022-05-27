@@ -1,5 +1,5 @@
 import random from "lodash.random";
-import { State, lifeExpectancy } from "./types/StateTypes";
+import { State, LifeExpectancy } from "./types/StateTypes";
 
 
 const initialState: State = {
@@ -8,7 +8,7 @@ const initialState: State = {
 
 export default initialState;
 
-export function getLifeExpectancy(): lifeExpectancy {
+export function getLifeExpectancy(): LifeExpectancy {
   const lifeExpectancy = random(0, 100, false);
   
   return {
