@@ -1,16 +1,14 @@
 import React, { useState  } from 'react';
-import { Login, Profile as ProfileType, Comment as CommentType, NotFound, Header} from "./Components";
+import { Login, Profile as ProfileType, Comments as CommentType, NotFound, Header} from "./Components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import initialState, { getLifeExpectancy } from './initialState';
 
 function App() {
   let [currentProfile, setCurrentProfile] = useState(initialState.currentProfile);
-  //let [currentComment, setCurrentComment] = useState(initialState.currentComment);
 
   let getSearchClick = () => {
     currentProfile = getLifeExpectancy();
     setCurrentProfile(currentProfile);
-    console.log(currentProfile);
   }
 
   let profile = <ProfileType {...currentProfile}
