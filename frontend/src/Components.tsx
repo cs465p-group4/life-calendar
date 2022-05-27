@@ -7,7 +7,6 @@ import { commentClient } from "./services/HttpService";
 
 export type ExpectancyProps = {
   weeksLeft: number,
-  weeks: string[],
   getSearchClick: () => void,
 }
 
