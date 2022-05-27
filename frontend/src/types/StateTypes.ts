@@ -1,9 +1,8 @@
 export type State = {
-  currentProfile: lifeExpectancy
-  currentComment: Array<Comment>
+  currentProfile: LifeExpectancy
 };
 
-export type lifeExpectancy = {
+export type LifeExpectancy = {
   weeksLeft: number
 }
 
