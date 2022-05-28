@@ -221,17 +221,21 @@ export function Comments() {
 const DisplayComments = (props) => {
   const { comments } = props;
 
-  return (
-    comments.map((comment, index) => {
-      return(
-        <>
-        <p>{comment.name}</p>
-        <p>{comment.message}</p>
-        <p>{comment.date}</p>
-        </>
-      )
-    })
-  )
+  if (comments.length > 0) {
+    return (
+      comments.map((comment, index) => {
+        return(
+          <>
+          <p>Name: {comment.name}</p>
+          <p>Comment: {comment.comment}</p>
+          <p>Date: {comment.date}</p>
+          </>
+        )
+      })
+    )
+  } else {
+    return (<h3>No Comments Yet!</h3>)
+  }
 }
 
 export const CommentForm = ({ postComment, handleInputChange, comment }) => {
