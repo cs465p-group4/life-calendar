@@ -7,7 +7,7 @@ DB_FILE = 'comments.db'
 class model(Model):
     def __init__(self):
         #self.comments = []
-        connection = sqlite3.connect(DB_FILE)
+        connection = sqlite3.connect("comments.db")
         cursor = connection.cursor()
         try:
             cursor.execute("select count(rowid) from comments")
