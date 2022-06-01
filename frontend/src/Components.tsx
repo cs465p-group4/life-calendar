@@ -227,7 +227,7 @@ const DisplayComments = (props) => {
         return(
           <>
           <p>Name: {comment.name}</p>
-          <p>Comment: {comment.comment}</p>
+          <p>Comment: {comment.message}</p>
           <p>Date: {comment.date}</p>
           </>
         )
