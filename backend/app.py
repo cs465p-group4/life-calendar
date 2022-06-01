@@ -6,10 +6,10 @@ import database
 
 app = Flask(__name__)
 CORS(app)
-model = database.getModel()
+model = database.get_model()
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route("/comment", methods=['GET','POST'])
+@app.route("/comments", methods=['GET','POST'])
 @cross_origin(origin='localhost')
 def comments():
     entries = {"name": [], "message": []}
@@ -19,6 +19,7 @@ def comments():
     else:
         print("In GET")
         for row in model.select():
+            print(row)
             entries["name"].append(row[0])
             entries["message"].append(row[1])
     return entries
