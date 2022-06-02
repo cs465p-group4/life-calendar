@@ -226,9 +226,17 @@ const DisplayComments = (props) => {
       comments.map((comment, index) => {
         return(
           <>
-          <p>Name: {comment.name}</p>
-          <p>Comment: {comment.message}</p>
-          <p>Date: {comment.date}</p>
+          <div className="commentDisplay">
+            <div className="commentContainer">
+              <div className="nameDate">
+                <p>Name: {comment.name}</p>
+                <p>Date: {comment.date}</p>
+              </div>
+              <div className="commentBox">
+                <p className="comment">{comment.message}</p>
+              </div>
+            </div>
+          </div>
           </>
         )
       })
@@ -289,9 +297,9 @@ export const Header = () => {
         <h1> Life Calendar </h1>
         <h3> How much longer do you have? </h3>
         <Link to="/">Dashboard</Link>
-        <br />
+        &nbsp; | &nbsp;
         <Link to="/login">Login</Link>
-        <br />
+        &nbsp; | &nbsp;
         <Link to="/comments">Comments</Link>
         <Outlet />
       </div>
