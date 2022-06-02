@@ -13,6 +13,9 @@ a:hover {
     color: #EEC643;
 }
 
+p {
+    margin: 1%;
+}
 .header {
     text-align: center;
 }
@@ -65,4 +68,31 @@ a:hover {
 #url {
     float: center;
     width: 200px;
+}
+
+.commentDisplay {
+    display: flex;
+    justify-content: left;
+    padding-top: 1%;
+}
+
+.commentContainer {
+    display: grid; 
+    grid-template-columns: 100% 1%;
+    border: #c9c4c4 1px solid;
+    width: 150px;
+}
+
+.nameDate,
+.comment {
+    text-align: left;
+    margin: 0;
+}
+
+.commentBox{
+    width: 200px;
+}
+
+.comment{
+    padding: 10px;
 }
