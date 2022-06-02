@@ -10,3 +10,9 @@ services:
             - POSTGRES_DB=lifecaldb
             - POSTGRES_USER=lifecal_user
             - POSTGRES_PASSWORD=lifecal_pass
+    comments:
+        container_name: comments
+        build: ./backend/middlewares/comments
+        restart: always
+        ports: 
+            - "5000:5000"
