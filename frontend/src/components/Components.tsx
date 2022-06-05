@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../services/AuthService";
 import { useNavigate } from "react-router-dom";
