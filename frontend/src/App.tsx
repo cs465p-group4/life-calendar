@@ -3,7 +3,6 @@ import { Login, NotFound, Header} from "./components/Components";
 import { LifeExpectancy } from "./components/lifeExpectancy";
 import { Comments } from "./components/comments"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import initialState, { getLifeExpectancy } from './initialState';
 
 function App() {
 
