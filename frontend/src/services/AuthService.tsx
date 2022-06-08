@@ -130,3 +130,20 @@ export const getPathname = (location: Location): string | undefined => {
     ? state.from.pathname
     : undefined;
 };
+
+export function setToken(userToken) {
+  localStorage.setItem("token", JSON.stringify(userToken));
+}
+
+export async function getLoginToken(email: string, password: string){
+  let res = await httpClient.post("/login", {
+    email,
+    password
+  });
+
+  let token = res.data;
+
+  console.log("Got result token:", token);
+  setToken( token);
+  return token;
+}
