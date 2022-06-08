@@ -1,20 +1,31 @@
 import React from 'react';
-import { Login, NotFound, Header} from "./components/Components";
+import { NotFound, Header} from "./components/Components";
+import { Login } from "./components/Login";
 import { LifeExpectancy } from "./components/lifeExpectancy";
 import { Comments } from "./components/comments"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CreateUser } from "./components/CreateUser";
+
+function Page({token, setToken}) {
+  return (
+    <div>
+      <Header token={token} setToken={setToken} />
+    </div>
+  )
+}
 
 function App() {
 
-  let login = <Login />
+  const [token, setToken] = React.useState<string | null>(null);
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Header />}>
+        <Route path="/" element={<Page token={token} setToken={setToken}/>}>
             <Route path="/" element={<LifeExpectancy />} />
-            <Route path="/login" element={login} />
+            <Route path="/login" element={<Login setToken={setToken} />} />
+            <Route path="/create-user" element={<CreateUser />} />
             <Route path="/comments" element={<Comments />} />
           </Route>
           <Route path="*" element={<NotFound />} />
