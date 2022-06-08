@@ -40,6 +40,18 @@ One of these issues revolves around auth. I made efforts to emulate a sort of do
 
 I also looked into changing some UI/UX design with the lifespan display but my initial assumptions lead to a dead end. Not a critical failure since the current UI is working, but a lot of wasted effort on my part.
 
+## Finishing Touches
+I updated the README to include installation and run instructions. I also added docker containers for the frontend and backend. I had to deal with an especially annoying sync issue with `package-lock.json` that was resolved by deleting both the frontend and backend file and running `npm install` to generate fresh package locks. After that the sync issue disappeared.
+
+I made some minor changes to the way login and user creation works too. The initial implementation was flawed since I created it with little knowledge of how it works and a half-baked understanding of how it should perform.
+
+## Retrospective
+Looking back on this term and learning the web dev experience, I can see the challenges posed by trying to teach a full stack course in 10 weeks. Coming into the term with zero web development experience (I have a static Jekyll site hosted on Github pages but I don't count that. I wrote zero code for it, instead using a template), I was very lost for a long, long time. I still would not be comfortable calling myself a full stack developer but at least now I have an idea of how everything works together and can begin refining my abilities further.
+
+Working with a team was nice. There are not many opportunities to do so in the university setting (specifically, working on a collaborative codebase. Group projects are common enough but the work involved is still usually individual) and it was a fun learning experience setting up version control and branch protections. It was also a taste of open-source style contibuting without having to sift through hundreds of "good first issues" on Github until finding one that is actually feasible for a first timer. I think if I was to do a project like this in the future, we would be well-served to adopt an Agile process in the beginning where we outline the stakeholders, the requirements, and the timeline and then separate out user stories that we can then assign to each team member. This way we all get experience with all parts of the "full stack" and there is more accountability while at the same time removing the risk of the project getting blocked by a single component.
+
+Even without using a modern software development cycle, we had a fairly uncomplicated collaboration experience. We were lucky to have good communication among team members and the use of CI protections from the very beginning prevented (most) merge conflicts.
+
 # Logan Peticolas
 
 I started work on the backend early May.  Most of the code worked perfectly opioid from Doggr, so there wasn’t entirely a lot of changes needing to be made.  My primary issue was reviewing how each component worked and integrated.  I probably ended up reviewing the lectures and looking up tutorials more than actual programming.  Early changes include changing the definitions of a user and adjusting routes were the main.  Then throughout May I would work on small changes locally that ended up not being necessary.  
