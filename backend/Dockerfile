@@ -11,7 +11,7 @@ COPY package.json package-lock.json ./
 
 # If building for prod, we don't need dev deps, so can run
 # > npm ci --only=prod
-RUN npm i 
+RUN npm ci 
 
 COPY --chown=node:node . .
 # We ignore the local .env, but need to use the docker one in its place

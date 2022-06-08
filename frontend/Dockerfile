@@ -13,7 +13,7 @@ RUN apt-get install -y apt-utils nano
 # install app dependencies
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm i 
+RUN npm ci 
 
 # Copy app over
 COPY . .
