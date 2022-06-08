@@ -61,23 +61,10 @@ export function Login() {
 
     const [user, setUser] = useState(initialUserState);
     const [submitted, setSubmitted] = useState(false);
-    const [submitFailed, setSubmitFailed] = useState(false);
   
 
-
-  const saveUser = () => {
-    User.create(user)
-      .then(res => {
-        setSubmitted(true);
-        setSubmitFailed(false);
-        console.log(res.data);
-      })
-      .catch(e => {
-        setSubmitFailed(true);
-        console.log("Error creating new user", e);
-      });
-  };
-
+    console.log(user.email, user.password);
+  
   const resetUser = () => {
     setUser(initialUserState);
     setSubmitted(false);
@@ -88,7 +75,7 @@ export function Login() {
    // Returns HTML
   return (
     <div>
-      <div className="doggrcenter doggr-section-text">Create user</div>
+      <div className="create-user">Create user</div>
       <div>
         {submitted ? (
           <>     {/* If we've already submitted, show this piece*/}
@@ -103,7 +90,6 @@ export function Login() {
               //we could add a div here and style this separately
               <h2>Email already exists!</h2>
             }
-            
           </>
         )
         }
