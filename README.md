@@ -8,7 +8,17 @@ Life Calendar hopes to give users an accurate scale of their life, for better or
 <!-- If you are experiencing depression or have thoughts about ending your life please call the National Suicide Prevention Lifeline at 1-800-273-TALK (8255). -->
 
 # Installation
-TODO: Installation instructions
+Before getting started, make sure you have `docker` installed. You can find instructions on how to install docker [here](https://www.docker.com/).
+You will also need to have `Node v16.x` or newer installed on your system.
+
+Clone this repo and navigate to the top-level directory.
+
+From here, run:
+```sh
+docker compose up
+```
+
+From a web browser, navigate to [http://localhost:3000](http://localhost:3000)
 
 # Team Members
 |Frontend Lead|Backend Lead|DevOps Lead|
