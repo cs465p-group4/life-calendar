@@ -14,6 +14,8 @@ export default function setupRoutes(app) {
   const router = express.Router();
 
   router.post("/users", checkDuplicateEmail, createUser );
+
+  
   router.post("/comment", async (req, res) => {
     res.status(200)
   });

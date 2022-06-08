@@ -1,12 +1,22 @@
 import React, { useState, useCallback } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../services/AuthService";
-import { useNavigate } from "react-router-dom";
+
+export enum SubmissionStatus {
+  NotSubmitted,
+  SubmitFailed,
+  SubmitSucceeded
+}
+
+const initialUserState = {
+  email: "",
+  password: "",
+};
 
 export function Login() {
 
   const context = useAuth();
-  const navigation: any = useNavigate();
+  //const navigation: any = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,9 +38,64 @@ export function Login() {
     }
     , [email, password, context, setSubmitFailed]);
 
-  const onCreateUser = () => {
-    navigation("/create-user");
+
+
+
+
+
+  const OnCreateUser = () => {
+    // Post user info to create user account
+    // Don't navigate anywhere else
+    // Dispaly message on success/failure
+    
+    let result = 0;
+
+    if (!result) {
+      // @TODO Display Error Message
+    }
+    else {
+      // display account created
+    }
+
+    const [user, setUser] = useState(initialUserState);
+    const [submitted, setSubmitted] = useState(false);
+  
+
+    console.log(user.email, user.password);
+  
+  const resetUser = () => {
+    setUser(initialUserState);
+    setSubmitted(false);
+  };
+
+
+
+   // Returns HTML
+  return (
+    <div>
+      <div className="create-user">Create user</div>
+      <div>
+        {submitted ? (
+          <>     {/* If we've already submitted, show this piece*/}
+            <h4>You submitted successfully!</h4>
+            <button onClick={resetUser}>
+              Reset
+            </button>
+          </>
+        ) : (
+          <>   {/* If we've NOT already submitted, show this piece*/}
+            {submitFailed && //This will only render if our prior submit failed
+              //we could add a div here and style this separately
+              <h2>Email already exists!</h2>
+            }
+          </>
+        )
+        }
+      </div>
+    </div>
+  );
   }
+  // END OF CREATE USER
 
 
   return (
@@ -70,7 +135,7 @@ export function Login() {
             <button className={""} onClick={onSubmitLogin}>
               Submit
             </button>
-            <button className={""} onClick={onCreateUser}>
+            <button className={""} onClick={OnCreateUser}>
               CreateUser
             </button>
         </form>

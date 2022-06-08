@@ -115,7 +115,7 @@ export function getPayloadFromToken (token) {
   console.log(payload);
   return payload;
 };
-
+ 
 const isObjectWithKey = <T extends string>(
   given: unknown,
   key: T
