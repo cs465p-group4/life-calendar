@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "nodemon ./src/server.ts",
-    "dev": "concurrently -k \"npx tsc -w \" \"nodemon ./dist/server.js\"",
+    "dev": "concurrently -k \"npx tsc -w \" \"nodemon ./dist/src/server.js\"",
     "test": "jest --watch --detectOpenHandles",
     "lint": "eslint .",
     "seed": "npx tsc && node dist/database/seed.js"

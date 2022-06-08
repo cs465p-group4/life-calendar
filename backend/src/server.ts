@@ -19,7 +19,7 @@ async function main() {
     const app = express();
     setupRoutes(app);
 
-    const server = await app.listen(9000, () => {
+    const server = await app.listen(9001, () => {
       console.log("Server is running");
     });
   }
