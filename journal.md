@@ -54,9 +54,23 @@ Even without using a modern software development cycle, we had a fairly uncompli
 
 # Logan Peticolas
 
-I started work on the backend early May.  Most of the code worked perfectly opioid from Doggr, so there wasn’t entirely a lot of changes needing to be made.  My primary issue was reviewing how each component worked and integrated.  I probably ended up reviewing the lectures and looking up tutorials more than actual programming.  Early changes include changing the definitions of a user and adjusting routes were the main.  Then throughout May I would work on small changes locally that ended up not being necessary.  
+## May 15
+I started work on the backend.  Most of the code we pulled worked perfectly opioid from Doggr, so there wasn’t entirely a lot of changes needing to be made.  However there were some pieces that needed adjusting or removing.  Mainly refactoring and tinkering.  More code was pulled from Doggr too.  This
 
-Mid-late May I encountered a local bug that caused a crash on every compile.  I ended up finding out that my new install included an outdated version of NPM.. it turns out that the version in Ubuntu’s package manager is so old that it cannot be updated and needs to be removed and installed NOT using apt install.  
-Once Sean was completed with the front end, I then worked with him, focussing mainly on familiarizing myself with html/css and the flow between the components.  At this point I noticed a few errors and have been working on understanding the cause and how to fix.
+## May 19
+My primary issue was reviewing how each component worked and integrated.  I ended up reviewing the lectures and looking up tutorials more than actually programming.  Early changes include changing the definitions of a user and adjusting routes were the main.  
 
+## May 21
+Small changes locally that ended up not being necessary.  Working on solving comilation bug.. 
 
+## May 25
+I ended up finding out that my new install included an outdated version of NPM.. it turns out that the version in Ubuntu’s package manager is so old that it cannot be updated and needs to be removed and installed NOT using apt install.  
+
+## May 28
+Once Sean was completed with the front end, I worked with him, focussing mainly on familiarizing myself with html/css and the flow between the components.  At this point I noticed a few errors and have been working on understanding the cause and how to fix.
+
+## May 31
+Working w/ Sean on frontend
+
+## June
+Spent time understanding more of the pieces in Doggr to fix account creation.  Error is from incomplete files from Doggr.  I spent more time reviewing Doggr, the account creation process, states, and more.  I ended up adding more components and figuring it out slightly.  The easy thing to do would be just copy everything from Doggr and change our code to fit.  But that's not much of a learning experience so I mainly tried to figure everything out on my own.  After PR, I am still not satisfied with the account creation, so there is more work to be done.  I am confident in the backend pieces but the front end servies and compenents still need work.
